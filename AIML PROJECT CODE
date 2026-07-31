@@ -1,0 +1,58 @@
+
+# Project: Extreme Weather Events Trend Analysis
+# Model: Linear Regression (Multi-Year Prediction)
+
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+
+
+def main():
+    # Historical climate data (example dataset)
+    data = {
+        "Year": [2000, 2003, 2006, 2009, 2012, 2015, 2018, 2021],
+        "Temperature_Anomaly": [0.42, 0.48, 0.52, 0.61, 0.64, 0.87, 0.95, 1.02]
+    }
+
+    df = pd.DataFrame(data)
+
+    # Prepare data
+    X = df[["Year"]]
+    y = df["Temperature_Anomaly"]
+
+    # Train model
+    model = LinearRegression()
+    model.fit(X, y)
+
+    # Predict multiple future years
+    future_years = np.array([[2030], [2035], [2040], [2045], [2050]])
+    future_predictions = model.predict(future_years)
+
+    # Display predictions
+    print("\nFuture Predictions:\n")
+    for year, value in zip(future_years, future_predictions):
+        print(f"Year {year[0]} → Predicted Temperature Anomaly: {value:.2f} °C")
+
+    # Plot results
+    plt.figure(figsize=(10, 6))
+    plt.scatter(X, y, label="Actual Data", color='blue')
+    plt.plot(X, model.predict(X), color='red', label="Trend Line")
+
+    # Plot multi-year predicted points
+    plt.scatter(future_years, future_predictions, color='green', label="Future Predictions")
+
+    for x, y_pred in zip(future_years, future_predictions):
+        plt.text(x, y_pred + 0.02, f"{x[0]}: {y_pred:.2f}°C", fontsize=9)
+
+    plt.xlabel("Year")
+    plt.ylabel("Temperature Anomaly (°C)")
+    plt.title("Multi-Year Temperature Prediction Using Linear Regression")
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+
+
+if __name__ == "__main__":
+    main()
