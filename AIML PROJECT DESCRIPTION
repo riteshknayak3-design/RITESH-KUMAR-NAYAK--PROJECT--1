@@ -1,0 +1,9 @@
+In this extended version of the model, I asked the machine to predict not only one year, but multiple future years.
+This helps us see how temperature may continue increasing if current trends remain the same.
+Higher temperature can make hurricanes stronger, droughts longer, and floods more damaging.
+
+This version of the model does not just predict one future year — it predicts many future years like 2030, 2035, 2040, 2045, and 2050.
+The model looks at how temperature has increased in the past and then guesses what future temperatures might be if the same pattern continues.
+
+These future values help us understand that if temperature keeps rising, then extreme weather events like storms, floods, and droughts 
+can become even stronger and more common.
